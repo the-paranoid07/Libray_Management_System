@@ -13,15 +13,16 @@ import lombok.Setter;
 @AllArgsConstructor
 @Getter
 @Setter
+
 public class Student {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
 
+    private int id;
     private String name;
     private int age;
-    private int mobNo;
+    private String mobNo;
 
     @Enumerated(EnumType.STRING)
     private Department department;
