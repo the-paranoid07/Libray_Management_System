@@ -1,6 +1,8 @@
 package com.example.Librarymanagementsystem.DTO.ResponseDto;
 
 import com.example.Librarymanagementsystem.enums.CardStatus;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

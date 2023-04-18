@@ -1,5 +1,6 @@
 package com.example.Librarymanagementsystem.controller;
 
+import com.example.Librarymanagementsystem.DTO.RequestDto.BookRequestDto;
 import com.example.Librarymanagementsystem.entity.Book;
 import com.example.Librarymanagementsystem.service.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,7 +18,7 @@ public class BookController {
     BookService bookService;
 
     @PostMapping("/add")
-    public String addBook(@RequestBody Book book) throws Exception{
-        return bookService.addBook(book);
+    public String addBook(@RequestBody BookRequestDto bookRequestDto) throws Exception{
+        return bookService.addBook(bookRequestDto);
     }
 }

@@ -1,5 +1,6 @@
 package com.example.Librarymanagementsystem.service.implementation;
 
+import com.example.Librarymanagementsystem.DTO.RequestDto.BookRequestDto;
 import com.example.Librarymanagementsystem.entity.Author;
 import com.example.Librarymanagementsystem.entity.Book;
 import com.example.Librarymanagementsystem.repository.AuthorRepository;
@@ -15,17 +16,23 @@ public class BookServiceImpl implements BookService {
     @Autowired
     BookRepository bookRepository;
     @Override
-    public String addBook(Book book) throws Exception {
+    public String addBook(BookRequestDto bookRequestDto) throws Exception {
 
         Author author;
 
         try {
-            author=authorRepository.findById(book.getAuthor().getId()).get();
+            author=authorRepository.findById(bookRequestDto.getAuthorId()).get();
         }catch (Exception e){
             throw new Exception("Author does not exist");
         }
 
+        Book book=new Book();
+        book.setTitle(bookRequestDto.getTitle());
+        book.setNumberOfPages(bookRequestDto.getNumberOfPages());
+        book.setPrice(bookRequestDto.getPrice());
+        book.setGenre(bookRequestDto.getGenre());
         book.setAuthor(author);
+
         author.getBookList().add(book);
 
         authorRepository.save(author);
